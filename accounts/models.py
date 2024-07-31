@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import  AbstractBaseUser
 
+#  TODO: Do a user base manager.
+
 class User (AbstractBaseUser):
     full_name = models.CharField(max_length=100)
     username  = models.CharField(max_length=50, unique=True, blank=True)
@@ -12,6 +14,7 @@ class User (AbstractBaseUser):
     # TODO:Come up with  validation formart of phone number using regex 7XXXXXXXX
     phone_number = models.CharField(max_length=16)
     role = models.CharField(max_length=15)
+    password = models.CharField(max_length=50)
 
     otp = models.CharField(max_length=7, blank=True)
     otp_max_try =models.CharField(max_length=2)
@@ -24,7 +27,7 @@ class User (AbstractBaseUser):
 
     date_joined = models.DateField()
 
-    REQUIRED_FIELDS = ['phone_number']
+    REQUIRED_FIELDS = ['phone_number','password']
     USERNAME_FIELD = 'username'
 
 class SellerProfile(models.Model):
