@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # Personal apps
     'accounts',
     'events',
+    'payment',
+    'tickets',
+    'authentication',
 ]
 
 MIDDLEWARE = [
