@@ -2,11 +2,12 @@ from django.db import models
 from accounts.models import SellerProfile
 
  # !FIXME: Needs to be imported in accounts
-class Categories(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
 
-class Events(models.Model):
+
+class Event(models.Model):
     max_attendees = models.IntegerField()
     venue = models.CharField(max_length=1000)
     datetime = models.DateTimeField()
@@ -17,7 +18,7 @@ class Events(models.Model):
     poster = models.FileField()
     
    
-    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
     sellerprofile = models.ForeignKey(SellerProfile, on_delete=models.SET_NULL , null=True)
 
